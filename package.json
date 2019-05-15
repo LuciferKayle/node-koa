@@ -1,0 +1,25 @@
+{
+  "name": "movie-node",
+  "version": "1.0.0",
+  "description": "a koa service for movie",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/LuciferKayle/node-koa.git"
+  },
+  "keywords": [
+    "koa"
+  ],
+  "author": "oliver",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuciferKayle/node-koa/issues"
+  },
+  "homepage": "https://github.com/LuciferKayle/node-koa#readme",
+  "dependencies": {
+    "koa": "^2.7.0"
+  }
+}
