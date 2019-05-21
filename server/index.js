@@ -1,8 +1,15 @@
+
 const Koa = require('koa')
 const app = new Koa()
 const { resolve } = require('path')
 const views = require('koa-views')
+const {connect} = require('./database/init');
 
+;(async () => {
+    await connect().then(()=> {
+        console.log(123);
+    });
+})()
 // 默认视图中间件
 app.use(views(resolve(__dirname,'./views/'),{
     extension: 'pug'

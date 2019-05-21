@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/LuciferKayle/node-koa#readme",
   "dependencies": {
-    "koa": "^2.7.0"
+    "koa": "^2.7.0",
+    "mongoose": "^5.5.10"
   }
 }
