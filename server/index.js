@@ -1,19 +1,20 @@
 const Koa = require('koa')
 const app = new Koa()
-const fs = require("fs")
-const pug = require('pug');
+const { resolve } = require('path')
+const views = require('koa-views')
 
+// 默认视图中间件
+app.use(views(resolve(__dirname,'./views/'),{
+    extension: 'pug'
+}))
 
-// 默认模板 
-const { pugTpl } = require('./tpl/index');
-
-app.use(async(ctx,next) => {
-    ctx.res.contentType = 'text/html; charset=utf-8'
-    ctx.type = 'text/html; charset=utf-8'
-    ctx.body = pug.render(pugTpl,{
-        you: 'Scott',
+app.use( async ( ctx ) => {
+    let info = {
+        you:'scott',
         me: 'oliver'
-    })
+    }
+
+    await ctx.render('index', info)
 })
 
 app.listen(6080)
