@@ -20,6 +20,11 @@
   },
   "homepage": "https://github.com/LuciferKayle/node-koa#readme",
   "dependencies": {
-    "koa": "^2.7.0"
+    "koa": "^2.7.0",
+    "koa-views": "^6.2.0",
+    "pug": "^2.0.3",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
+    "vod-node-sdk": "^1.0.0"
   }
 }
