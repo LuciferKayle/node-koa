@@ -1,25 +1,37 @@
 const rq = require('request-promise-native');
+
+const mongoose = require('mongoose');
+const Movie = mongoose.model('Movie');
+
 let baseurl = 'https://v1.itooi.cn/';
 
-let result = [];
-
-async function fenchMovie(doubanId) {
+async function fenchMovie() {
     let url = baseurl + 'netease/mv/top?pageSize=20&page=0';
     let res =  await rq(url);
     res = JSON.parse(res);
     let data = res.data;    
-    const promises = data.map(item => {
-        getMvUrl(item.id)
-    })
-    
-    for (const promise of promises) {
-        const mvUrl = await promise
-        result.push({
-            mvUrl
-        });
-        console.log(result);
-    }
 
+    data.forEach( async (item)=> {
+        let movie = await Movie.findOne({
+            MvId: item.id
+        })
+
+        let info = {
+            MvId: item.id,
+            score: item.score,
+            playCount: item.playCount,
+            name: item.name,
+            cover: item.cover,
+            artistId: item.artistId,
+            artistName: item.artistName
+        }
+
+        if(!movie) {
+            movie = new Movie(info);
+            await movie.save();
+        }
+
+    });
 }
 
 async function getMvUrl(doubanId) {
@@ -33,5 +45,4 @@ async function getMvUrl(doubanId) {
 
 (async function() {
     await fenchMovie();
-    console.log(result);
 }());
