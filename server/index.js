@@ -1,14 +1,28 @@
 const Koa = require('koa')
-const app = new Koa()
 const { resolve } = require('path')
-const views = require('koa-views')
-const { connect , initSchema} = require('./database/init');
+// const views = require('koa-views')
+const { connect, initSchema } = require('./database/init');
+const R = require('ramda');
 
-const mongoose = require('mongoose');
+const MIDDLEWARES = ['router'];
 
+// const router = require('./routers/index.js');  // 引入路由
 
+const useMiddlewares = (app) => {
+    R.map(
+        R.compose(
+            R.forEachObjIndexed(
+                initWith => initWith(app)
+            ),
+            require,
+            name => resolve(__dirname, `./middlewares/${name}`)
+        )
+    )(MIDDLEWARES);
+}
 
-;(async () => {
+// 路由注入
+
+; (async () => {
 
     await connect()
 
@@ -16,31 +30,21 @@ const mongoose = require('mongoose');
 
     initSchema();
 
-    const Movie = mongoose.model('Movie');
+    // 爬取数据的脚本
 
-    require('./tasks/mv.js');
-    require('./tasks/api.js');
+    // require('./tasks/mv.js');
 
+    // 实时更新mv播放地址（防止过期）
 
+    // require('./tasks/api.js');
     // require('./tasks/upload.js');
 
-    // 初始化视图标签
-    const app = new Koa()  
+    const app = new Koa();
+    await useMiddlewares(app);
 
-    // 默认视图中间件
-    app.use(views(resolve(__dirname,'./views/'),{
-        extension: 'pug'
-    }))
 
-    app.use( async ( ctx ) => {
-        let info = {
-            you:'scott',
-            me: 'oliver'
-        }
-    
-        await ctx.render('index', info)
-    })
-    
     app.listen(4455)
-  })()
+})()
+
+
 

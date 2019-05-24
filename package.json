@@ -4,7 +4,8 @@
   "description": "a koa service for movie",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",
@@ -21,14 +22,29 @@
   "homepage": "https://github.com/LuciferKayle/node-koa#readme",
   "dependencies": {
     "bcrypt": "^3.0.6",
+    "core-js": "^2.6.8",
     "glob": "^7.1.4",
     "koa": "^2.7.0",
+    "koa-router": "^7.4.0",
     "koa-views": "^6.2.0",
     "mongoose": "^5.5.10",
     "nanoid": "^2.0.3",
     "pug": "^2.0.3",
+    "ramda": "^0.26.1",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
     "vod-node-sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.12",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "parcel-bundler": "^1.5.1"
   }
 }
