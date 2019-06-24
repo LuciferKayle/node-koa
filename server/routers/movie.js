@@ -10,7 +10,7 @@ const {
 } = require('../services/movie');
 
 
-@controller('/api/v0/movies')
+@controller('/api/v0/movie')
 
 export class movieController {
     @get('/')

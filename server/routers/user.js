@@ -11,7 +11,7 @@ const {
 
 @controller('/api/v0/user')
 
-export class movieController {
+export class userController {
     @post('/')
     async checkPassword(ctx,next) {
         const {email, password} = ctx.request.body;

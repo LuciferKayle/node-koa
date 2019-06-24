@@ -20,14 +20,17 @@ export class Route {
         glob.sync(resolve(this.apiPath,'./**/*.js')).forEach(require);
         
         for(let [conf, controller] of routerMap) {
-            console.log(conf,'peizhi')
-            console.log(controller,'cjdkfsj')
-            const controller = isArray(controller);
+            const controllers = isArray(controller);
             const prefixPath = conf.target[symbolPrefix];
             if(prefixPath) prefixPath = normalizePath(prefixPath);
             const routerPath = prefixPath + conf.path;
-            this.router[conf.methods](routerPath, ...controller);
+            this.router[conf.methods](routerPath, ...controllers);
         }
+
+        // 注册路由
+        
+        this.app.use(this.router.routes());
+        this.app.use(this.router.allowedMethods());
 
     }
 

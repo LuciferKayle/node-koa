@@ -6,7 +6,7 @@ const Movie = mongoose.model('Movie');
 let baseurl = 'https://v1.itooi.cn/';
 
 async function fenchMovie() {
-    let url = baseurl + 'netease/mv/top?pageSize=100&page=0';
+    let url = baseurl + 'netease/mv/top?pageSize=50&page=2';
     let res =  await rq(url);
     res = JSON.parse(res);
     let data = res.data;    
