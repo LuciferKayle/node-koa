@@ -15,11 +15,9 @@ const {
 export class movieController {
     @get('/')
     async getMoviesAll(ctx, next) {
-        const movies = await getAllMovies();
-
-        ctx.body = {
-            movies
-        };
+        let {page,pageSize} = ctx.query;
+        const response = await getAllMovies(parseInt(page),parseInt(pageSize));
+        ctx.body = response;
     }
 
     @get('/:id')
