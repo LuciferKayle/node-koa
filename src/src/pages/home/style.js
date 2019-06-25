@@ -82,7 +82,7 @@ export const MovieItemContainer = styled.div`
     -webkit-transition: transform .3s ease-in-out;
     transition: transform .3s ease-in-out;
 
-    &:nth-of-type(5n + 1) {
+    &:nth-of-type(5n) {
         margin-right: 0;
     }
 
@@ -143,11 +143,27 @@ export const MovieItemDetail = styled.div`
 
         .iconicon_comment:hover::before {
             color: yellow;
+            transform: scale(1.2,1.2);
         }
 
         .iconaixin:hover::before {
             color: red;
+            transform: scale(1.2,1.2);
         }
     }
+
+`
+
+export const ScrollTopBtn = styled.div`
+    position: fixed;
+    bottom: 100px;
+    right: 40px;
+    z-index: 1040;
+    border: 1px solid #dcdcdc;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
 
 `
