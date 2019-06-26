@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import { Link } from "react-router-dom";
 import MovieItem from './components/MovieItem';
 import Loading from '../../common/loading.js';
 import {
@@ -43,7 +43,10 @@ class Home extends Component {
                         {
                             isLoading ? <Loading /> :
                                 mvList.map((item) => {
-                                    return <MovieItem data={item} key={item._id}></MovieItem>
+                                    return (
+                                        <Link className="mv-item-link" to={`/detail/${item.MvId}`} key={item._id}>
+                                            <MovieItem data={item}></MovieItem>
+                                        </Link>)
                                 })
                         }
                     </div>

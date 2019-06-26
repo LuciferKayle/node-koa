@@ -22,7 +22,17 @@ export const MovieContainer = styled.div`
     .main-container {
         min-height: 600px;
         position: relative;
+
+        .mv-item-link {    
+            display: inline-block;
+            margin: 0 16px 24px 0;
+            
+            &:nth-of-type(5n) {
+                margin-right: 0;
+            }
+        }
     }
+
 
     .load-more {
         box-sizing: border-box;
@@ -76,15 +86,10 @@ export const MovieItemContainer = styled.div`
     background: #fff;
     -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.01), 0 6px 12px 0 rgba(0,0,0,.06);
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.01), 0 6px 12px 0 rgba(0,0,0,.06);
-    margin: 0 16px 24px 0;
     color: #353535;
     overflow: hidden;
     -webkit-transition: transform .3s ease-in-out;
     transition: transform .3s ease-in-out;
-
-    &:nth-of-type(5n) {
-        margin-right: 0;
-    }
 
     &:hover {
         transform: translate3d(0,-8px,0);
