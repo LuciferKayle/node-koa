@@ -7,7 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon start.js",
     "build": "rimraf parcel/dist && parcel build src/index.html --no-cache -d dist --public-url /"
-    
   },
   "repository": {
     "type": "git",
@@ -35,7 +34,8 @@
     "ramda": "^0.26.1",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
-    "vod-node-sdk": "^1.0.0"
+    "vod-node-sdk": "^1.0.0",
+    "xgplayer": "^2.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import MovieItem from './components/MovieItem';
-import Loading from '../../common/loading.js';
+import Loading from '../../common/loading/loading';
+
 import {
     HomeContainer,
     MovieContainer,

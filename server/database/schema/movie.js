@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const movieSchame = new Schema({
     MvId: {
       unique: true,
-      type: String
+      type: String,
     },
     score: Number,
     playCount: Number,

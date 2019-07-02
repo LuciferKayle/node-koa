@@ -26,7 +26,9 @@ exports.connect = () => {
         if(process.env.NODE_ENV !== 'production') {
             mongoose.set('debug', true);
         }
-    
+
+        mongoose.set('useCreateIndex', true);
+
         mongoose.connect(db,{
             useNewUrlParser: true
         })
@@ -43,6 +45,7 @@ exports.connect = () => {
         })
     
         dbCon.on('error', (err)=>{
+            reject(err);
             console.log(err);
         })
     

@@ -8,7 +8,7 @@ const artistSchame = new Schema({
 
     artistId: {
         unique: true,
-        type: String
+        type: String,
     },
 
     mvs: [

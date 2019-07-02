@@ -17,12 +17,11 @@ async function fenchUrl(id) {
 }
 
 ;(async ()=> {
-
     let movies = await Movie.find({
         $or: [
             {videoKey: null},
             {coverKey: null}
-        ]
+        ],
     })
 
     for(var i = 0; i < movies.length; i++) {
@@ -33,5 +32,6 @@ async function fenchUrl(id) {
     }
 
 })()
+
 
 

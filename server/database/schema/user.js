@@ -12,7 +12,7 @@ const userSchame = new Schema({
     username: {
         unique: true,
         required: true,
-        type: String
+        type: String,
     },
 
     email: {
@@ -141,19 +141,6 @@ userSchame.methods = {
             }
         })
     },
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
 
 mongoose.model('User', userSchame)
