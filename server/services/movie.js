@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Movie = mongoose.model('Movie');
 
-export const getAllMovies = async (page = 1, pageSize = 10) => {
+export const getAllMovies = async (page = 1, pageSize = 10, createdAt = 1) => {
 
     let total = await Movie.countDocuments({}, function (err, count) {
         return err ? 0 : count;
@@ -11,7 +11,7 @@ export const getAllMovies = async (page = 1, pageSize = 10) => {
         .$where('this.video')
         .skip((page - 1) * pageSize)
         .limit(pageSize)
-        .sort({ 'meta.createdAt': -1 })
+        .sort({ 'meta.createdAt': createdAt })
         .exec()
 
         return {

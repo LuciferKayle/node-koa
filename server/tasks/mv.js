@@ -79,5 +79,4 @@ async function getMvUrl(doubanId) {
 (async function() {
 
     await fenchMovie();
-    // await fenchSinger('泰勒·斯威夫特');
 }());

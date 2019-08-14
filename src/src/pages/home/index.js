@@ -122,7 +122,7 @@ class Home extends Component {
 
         this.setState(() => ({ isLoadingMore: true }));
 
-        axios.get(`/api/v0/movie?page=${page + 1}&pageSize=10`).then(res => {
+        axios.get(`/api/v0/movie?page=${page + 1}&pageSize=10&createdAt=-1`).then(res => {
             let { movies, total } = res.data;
             let newMvList = [].concat(that.state.mvList).concat(movies);
 
@@ -140,7 +140,7 @@ class Home extends Component {
 
     getMvList(page = 1) {
         let that = this;
-        axios.get(`/api/v0/movie?page=${page}&pageSize=10`).then(res => {
+        axios.get(`/api/v0/movie?page=${page}&pageSize=10&createdAt=-1`).then(res => {
             let { movies, total } = res.data;
             that.setState(() => ({ mvList: movies, isLoading: false, total: total }));
         }).catch(err => {

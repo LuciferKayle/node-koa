@@ -26,9 +26,20 @@ async function fenchUrl(id) {
 
     for(var i = 0; i < movies.length; i++) {
         let movie = movies[i];
-        let data = await fenchUrl(movie.MvId);
-        movie.video = data.data;
-        await movie.save();
+        try{
+            let data = await fenchUrl(movie.MvId);
+            console.log(data.code);
+            if(data.code !== 200) {
+                await movie.remove({MvId: movie.MvId},function(err) {
+                    console.log(err);
+                })
+            } else {
+                movie.video = data.data;
+                await movie.save();
+            }
+        }catch(err) {
+            console.log(err);
+        }
     }
 
 })()

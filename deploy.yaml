@@ -4,7 +4,7 @@ apps:
     name: 'movie'              # 程序名称
     env:                     # 环境变量
       COMMON_VARIABLE: true
-    env_production: 
+      env_production: 
       NODE_ENV: production
 
 deploy:                     # 部署脚本
@@ -17,6 +17,6 @@ deploy:                     # 部署脚本
     repo: git@github.com:LuciferKayle/node-koa.git # 远程仓库地址
     path: /data/wwwroot/     # 拉取到服务器某个目录下
     pre-deploy: git fetch --all # 部署前执行
-    post-deploy: npm install &&  pm2 reload deploy.yaml --env production # 部署后执行
+    post-deploy: npm install && cd ./src && npm install && npm run build && pm2 reload deploy.yaml --env production # 部署后执行
     env:
     NODE_ENV: production

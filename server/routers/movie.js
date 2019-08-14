@@ -15,8 +15,8 @@ const {
 export class movieController {
     @get('/')
     async getMoviesAll(ctx, next) {
-        let {page,pageSize} = ctx.query;
-        const response = await getAllMovies(parseInt(page),parseInt(pageSize));
+        let {page,pageSize,createdAt} = ctx.query;
+        const response = await getAllMovies(parseInt(page),parseInt(pageSize),parseInt(createdAt));
         ctx.body = response;
     }
 
