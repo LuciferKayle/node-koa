@@ -7,7 +7,7 @@ const Movie = mongoose.model('Movie');
 let baseurl = 'http://v1.itooi.cn/';
 
 async function fenchMovie() {
-    let url = baseurl + 'netease/mv/top?pageSize=50&page=2';
+    let url = baseurl + 'netease/mv/top?pageSize=50&page=1';
     let res =  await rq(url);
     res = JSON.parse(res);
     let data = res.data;    
@@ -76,7 +76,11 @@ async function getMvUrl(doubanId) {
     }
 }
 
-(async function() {
+// (async function() {
+//     await fenchSinger('泰勒');
+// }());
 
-    await fenchMovie();
-}());
+module.exports = {
+    fenchSinger: fenchSinger,
+    fenchMovie: fenchMovie
+}

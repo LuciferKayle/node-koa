@@ -6,7 +6,9 @@ const {
 
 const {
     getAllMovies,
-    getMovieDetail
+    getMovieDetail,
+    loadMoreMvBySingName,
+    loadMoreMv
 } = require('../services/movie');
 
 
@@ -30,4 +32,17 @@ export class movieController {
         };
     }
 
+    @get('/loadMore')
+    async getMoreMv(ctx) {
+        await loadMoreMv();
+        ctx.body = 'ok';
+    }
+
+    @get('/loadMoreSinger')
+    async getMoreSingerMv(ctx, next) {
+        let {singer} = ctx.query;
+        const response = await loadMoreMvBySingName('singer');
+        ctx.body = 'ok';
+    }
 }
+

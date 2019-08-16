@@ -34,6 +34,8 @@ const useMiddlewares = (app) => {
 
     initSchema();
 
+    const {fenchMovie}  =  require('./tasks/mv.js');  
+
     // 设置定时任务每天更新
 
     var rule = new schedule.RecurrenceRule();
@@ -52,7 +54,6 @@ const useMiddlewares = (app) => {
         var j = schedule.scheduleJob(times, function(){
             try {
                 // 爬取数据的脚本
-                require('./tasks/mv.js');        
                 // 实时更新mv播放地址（防止过期）
                 require('./tasks/api.js');  
             } catch (error) {
@@ -64,12 +65,10 @@ const useMiddlewares = (app) => {
         console.log(error);
     }
 
-                    // 爬取数据的脚本
-                    require('./tasks/mv.js');        
-                    // 实时更新mv播放地址（防止过期）
-                    require('./tasks/api.js');  
- 
-    
+    // 爬取数据的脚本
+
+    // 实时更新mv播放地址（防止过期）
+    // require('./tasks/api.js');  
     // require('./tasks/upload.js');
 
     const app = new Koa();
