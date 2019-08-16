@@ -68,7 +68,7 @@ const useMiddlewares = (app) => {
     // 爬取数据的脚本
 
     // 实时更新mv播放地址（防止过期）
-    // require('./tasks/api.js');  
+    require('./tasks/api.js');  
     // require('./tasks/upload.js');
 
     const app = new Koa();
