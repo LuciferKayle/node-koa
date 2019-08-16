@@ -1,6 +1,5 @@
 
 
-const ip = 'localhost'
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const db = 'mongodb://admin:123456@localhost:27017/douban-trailer'
@@ -14,9 +13,12 @@ exports.initSchema = ()=> {
     glob.sync(resolve(__dirname,'./schema','**/*.js')).forEach(require)
 }
 
+
+
 exports.initAdmin = () => {
 
 }
+
 
 exports.connect = () => {
     let maxConnectTime = 0
