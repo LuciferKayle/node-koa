@@ -30,20 +30,29 @@ const useMiddlewares = (app) => {
 
     // 初始化schema
 
+    
+
     initSchema();
 
     // 设置定时任务每天更新
 
     var rule = new schedule.RecurrenceRule();
-    rule.dayOfWeek = [0, new schedule.Range(0, 7)];
-    rule.hour = 8;
-    rule.minute = 0;
+    // var date = new Date(2019, 8, 14, 16, 45, 0);
+    // rule.dayOfWeek = [0, new schedule.Range(0, 7)];
+    // rule.hour = 8;
+    // rule.minute = 0;
+    var times = [];
+　　for(var i=1; i<60; i++){
+　　　　times.push(i);
+　　}
+　　rule.minute = times;
+
 
     try {
-        var j = schedule.scheduleJob(rule, function(){
+        var j = schedule.scheduleJob(times, function(){
             try {
                 // 爬取数据的脚本
-                reqire('./tasks/mv.js');        
+                require('./tasks/mv.js');        
                 // 实时更新mv播放地址（防止过期）
                 require('./tasks/api.js');  
             } catch (error) {
