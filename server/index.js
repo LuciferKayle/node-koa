@@ -55,7 +55,7 @@ const useMiddlewares = (app) => {
             try {
                 // 爬取数据的脚本
                 // 实时更新mv播放地址（防止过期）
-                // require('./tasks/api.js');  
+                require('./tasks/api.js');  
             } catch (error) {
                 console.log(error);
             }
