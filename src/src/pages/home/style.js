@@ -172,3 +172,42 @@ export const ScrollTopBtn = styled.div`
     cursor: pointer;
 
 `
+
+export const OperateContainer = styled.div`
+
+    padding：20px;
+    height: 40px;
+
+    .main-container {
+        margin: 0 auto;
+        width: 400px;
+
+        .input-singer {
+            float: left;
+            padding: 0 40px 0 20px;
+            width: 200px;
+            height: 38px;
+            font-size: 14px;
+            border: 1px solid #eee;
+            border-radius: 40px;
+            background: #eee;
+            outline: none;
+            margin-right: 20px;
+        }
+    
+        .search-btn {
+            float: left;
+            cursor: pointer;
+            width: 100px;
+            height: 38px;
+            line-height: 38px;
+            text-align: center;
+            opacity: 0.5;
+            border-radius: 20px;
+            color: #fff;
+            background-color: green;
+            display: block;
+        }
+    }
+
+`

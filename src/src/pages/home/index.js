@@ -7,7 +7,8 @@ import Loading from '../../common/loading/loading';
 import {
     HomeContainer,
     MovieContainer,
-    ScrollTopBtn
+    ScrollTopBtn,
+    OperateContainer
 } from './style';
 
 class Home extends Component {
@@ -37,6 +38,14 @@ class Home extends Component {
         let { mvList, isLoading, isLoadingMore, showScrollTop } = this.state;
         return (
             <HomeContainer>
+                <OperateContainer>
+                    <div className="main-container"> 
+                        <input className="input-singer" ref={input => this.input = input} placeholder="输入歌手名称" text="text"/>
+                        <div className="search-btn" onClick={this.search.bind(this)}>搜索</div>
+                    </div> 
+                </OperateContainer>
+                
+
                 <MovieContainer>
                     <div className="tag-title">热门单曲</div>
 
@@ -71,6 +80,23 @@ class Home extends Component {
 
             </HomeContainer>
         )
+    }
+
+    search() {
+        const inpVal = this.input.value;
+
+
+        if(!inpVal) {
+            alert('输入singer名称');
+            return false;
+        }   
+
+        axios.get(`/api/v0/movieload?singer=${inpVal}`).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        });
+
     }
 
     scrollTop() {
