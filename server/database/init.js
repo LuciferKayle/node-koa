@@ -14,12 +14,9 @@ exports.initSchema = ()=> {
     glob.sync(resolve(__dirname,'./schema','**/*.js')).forEach(require)
 }
 
-
-
 exports.initAdmin = () => {
 
 }
-
 
 exports.connect = () => {
     let maxConnectTime = 0
