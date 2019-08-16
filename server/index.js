@@ -63,6 +63,11 @@ const useMiddlewares = (app) => {
     } catch (error) {
         console.log(error);
     }
+
+                    // 爬取数据的脚本
+                    require('./tasks/mv.js');        
+                    // 实时更新mv播放地址（防止过期）
+                    require('./tasks/api.js');  
  
     
     // require('./tasks/upload.js');
