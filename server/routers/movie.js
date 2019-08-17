@@ -38,8 +38,7 @@ export class movieloadController {
     @get('/')
     async getMoreSingerMv(ctx, next) {
         let {singer} = ctx.query;
-        console.log(singer);
-        const response = await loadMoreMvBySingName(singer);
-        ctx.body = response;
+        await loadMoreMvBySingName(singer);
+        ctx.body = 'ok';
     }
 }
