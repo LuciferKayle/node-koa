@@ -23,13 +23,15 @@ let baseurl = 'https://v1.itooi.cn/';
 
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
+                let result = JSON.parse(body);
+
                 try {
-                    if(body.code !== 200) {
+                    if(result.code !== 200) {
                         movie.remove({MvId: movie.MvId},function(err) {
                             console.log(err);
                         })
                     } else {
-                        movie.video = body.data;
+                        movie.video = result.data;
                         movie.save();
                     }
                 } catch (err) {

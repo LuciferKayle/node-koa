@@ -39,19 +39,12 @@ const useMiddlewares = (app) => {
     // 设置定时任务每天更新
 
     var rule = new schedule.RecurrenceRule();
-    // var date = new Date(2019, 8, 14, 16, 45, 0);
-    // rule.dayOfWeek = [0, new schedule.Range(0, 7)];
-    // rule.hour = 8;
-    // rule.minute = 0;
-    var times = [];
-　　for(var i=1; i<60; i++){
-　　　　times.push(i);
-　　}
-　　rule.minute = times;
-
+    rule.dayOfWeek = [0, new schedule.Range(0, 7)];
+    rule.hour = 8;
+    rule.minute = 0;
 
     try {
-        var j = schedule.scheduleJob(times, function(){
+        var j = schedule.scheduleJob(rule, function(){
             try {
                 // 爬取数据的脚本
                 // 实时更新mv播放地址（防止过期）
@@ -66,9 +59,9 @@ const useMiddlewares = (app) => {
     }
 
     // 爬取数据的脚本
-    fenchMovie();
+    await  fenchMovie();
     // 实时更新mv播放地址（防止过期）
-    require('./tasks/api.js');  
+    // require('./tasks/api.js');  
     // require('./tasks/upload.js');
 
     const app = new Koa();
