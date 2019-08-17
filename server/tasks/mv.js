@@ -66,7 +66,7 @@ async function fenchSinger(singerName) {
     });
 
     // 更新mv
-    require('./api.js');  
+    await require('./api.js');  
 }
 
 async function getMvUrl(doubanId) {
