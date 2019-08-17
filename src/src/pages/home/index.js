@@ -92,6 +92,7 @@ class Home extends Component {
         }   
 
         axios.get(`/api/v0/movieload?singer=${inpVal}`).then(res => {
+            window.location.reload();
             console.log(res);
         }).catch(err => {
             console.log(err);
