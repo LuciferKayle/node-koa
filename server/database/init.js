@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-const db = 'mongodb://admin:123456@localhost:27017/douban-trailer'
+const db = 'mongodb://admin:123456@132.232.50.181:27017/douban-trailer'
 
 const glob = require('glob')
 
