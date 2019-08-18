@@ -34,6 +34,12 @@ const useMiddlewares = (app) => {
 
     initSchema();
 
+    
+    const app = new Koa();
+    await useMiddlewares(app);
+
+    app.listen(4455);
+
     const {fenchMovie}  =  require('./tasks/mv.js');  
 
     // 设置定时任务每天更新
@@ -41,7 +47,7 @@ const useMiddlewares = (app) => {
     var rule3     = new schedule.RecurrenceRule();  
     var times3    = [1,5,9,13,17,21];  
     rule3.hour  = times3;  
-    
+
     try {
         var j = schedule.scheduleJob(rule3, function(){
             try {
@@ -62,11 +68,6 @@ const useMiddlewares = (app) => {
     // 实时更新mv播放地址（防止过期）
     // require('./tasks/api.js');  
     // require('./tasks/upload.js');
-
-    const app = new Koa();
-    await useMiddlewares(app);
-
-    app.listen(4455)
 })()
 
 
