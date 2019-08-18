@@ -38,13 +38,12 @@ const useMiddlewares = (app) => {
 
     // 设置定时任务每天更新
 
-    var rule = new schedule.RecurrenceRule();
-    rule.dayOfWeek = [0, new schedule.Range(0, 7)];
-    rule.hour = 8;
-    rule.minute = 0;
-
+    var rule3     = new schedule.RecurrenceRule();  
+    var times3    = [1,5,9,13,17,21];  
+    rule3.hour  = times3;  
+    
     try {
-        var j = schedule.scheduleJob(rule, function(){
+        var j = schedule.scheduleJob(rule3, function(){
             try {
                 // 爬取数据的脚本
                 // 实时更新mv播放地址（防止过期）
