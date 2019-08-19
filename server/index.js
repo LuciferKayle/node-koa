@@ -45,7 +45,10 @@ const useMiddlewares = (app) => {
     // 设置定时任务每天更新
 
     var rule3     = new schedule.RecurrenceRule();  
-    var times3    = [1,5,9,13,17,21];  
+    let times3 = [];
+    for(var i = 1; i < 24; i++) {
+        times3.push(i);
+    }
     rule3.hour  = times3;  
 
     try {
@@ -64,7 +67,7 @@ const useMiddlewares = (app) => {
     }
 
     // 爬取数据的脚本
-    await  fenchMovie();
+    // await  fenchMovie();
     // 实时更新mv播放地址（防止过期）
     // require('./tasks/api.js');  
     // require('./tasks/upload.js');

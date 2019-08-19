@@ -64,7 +64,6 @@ async function fenchSinger(singerName) {
         }
 
     });
-
     // 更新mv
     await require('./api.js');  
 }

@@ -21,6 +21,10 @@ let baseurl = 'https://v1.itooi.cn/';
 
         let url = baseurl + `netease/mvUrl?id=${movie.MvId}&quality=1080&isRedirect=0`;
 
+        new Promise( (resolve,reject) => {
+            
+        })
+
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 let result = JSON.parse(body);
