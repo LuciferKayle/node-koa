@@ -48,7 +48,7 @@ const useMiddlewares = (app) => {
     try {
         var j = schedule.scheduleJob(rule3, function(){
             try {
-                await fenchMovie();
+                 fenchMovie();
             } catch (error) {
                 console.log(error);
             }
