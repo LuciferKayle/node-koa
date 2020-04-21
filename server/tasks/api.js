@@ -1,4 +1,4 @@
-const rq = require('request-promise-native');
+var request = require("request");
 const mongoose = require('mongoose');
 const Movie = mongoose.model('Movie');
 
@@ -16,15 +16,18 @@ async function fenchUrl(id) {
     return body;
 }
 
-;(async ()=> {
+; (async () => {
     let movies = await Movie.find({
         $or: [
-            {videoKey: null},
-            {coverKey: null}
+            { videoKey: null },
+            { coverKey: null }
         ],
     })
 
-    for(var i = 0; i < movies.length; i++) {
+
+
+    for (var i = 0; i < movies.length; i++) {
+
         let movie = movies[i];
         try{
             let data = await fenchUrl(movie.MvId);
@@ -37,9 +40,8 @@ async function fenchUrl(id) {
                 movie.video = data.data.url;
                 await movie.save();
             }
-        }catch(err) {
-            console.log(err);
-        }
+        });
+
     }
 
 })()

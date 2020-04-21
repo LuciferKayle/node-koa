@@ -34,21 +34,22 @@ const useMiddlewares = (app) => {
 
     initSchema();
 
+    
+    const app = new Koa();
+    await useMiddlewares(app);
+
+    app.listen(4455);
+
     const {fenchMovie}  =  require('./tasks/mv.js');  
 
     // 设置定时任务每天更新
 
-    var rule = new schedule.RecurrenceRule();
-    // var date = new Date(2019, 8, 14, 16, 45, 0);
-    // rule.dayOfWeek = [0, new schedule.Range(0, 7)];
-    // rule.hour = 8;
-    // rule.minute = 0;
-    var times = [];
-　　for(var i=1; i<60; i++){
-　　　　times.push(i);
-　　}
-　　rule.minute = times;
-
+    var rule3     = new schedule.RecurrenceRule();  
+    let times3 = [];
+    for(var i = 1; i < 24; i++) {
+        times3.push(i);
+    }
+    rule3.hour  = times3;  
 
     // try {
     //     var j = schedule.scheduleJob(times, function(){
@@ -65,6 +66,7 @@ const useMiddlewares = (app) => {
     //     console.log(error);
     // }
 
+    await  fenchMovie();
     // 爬取数据的脚本
 
     
