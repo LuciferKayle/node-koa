@@ -34,37 +34,31 @@ const useMiddlewares = (app) => {
 
     initSchema();
 
-    
-    const app = new Koa();
-    await useMiddlewares(app);
-
-    app.listen(4455);
-
     const {fenchMovie}  =  require('./tasks/mv.js');  
 
     // 设置定时任务每天更新
 
-    var rule3     = new schedule.RecurrenceRule();  
+    var rule3  = new schedule.RecurrenceRule();  
     let times3 = [];
     for(var i = 1; i < 24; i++) {
         times3.push(i);
     }
     rule3.hour  = times3;  
 
-    // try {
-    //     var j = schedule.scheduleJob(times, function(){
-    //         try {
-    //             // 爬取数据的脚本
-    //             // 实时更新mv播放地址（防止过期）
-    //             // require('./tasks/api.js');  
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
+    try {
+        var j = schedule.scheduleJob(times, function(){
+            try {
+                // 爬取数据的脚本
+                // 实时更新mv播放地址（防止过期）
+                // require('./tasks/api.js');  
+            } catch (error) {
+                console.log(error);
+            }
     
-    //     });
-    // } catch (error) {
-    //     console.log(error);
-    // }
+        });
+    } catch (error) {
+        console.log(error);
+    }
 
     await  fenchMovie();
     // 爬取数据的脚本
