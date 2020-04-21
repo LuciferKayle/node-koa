@@ -46,7 +46,7 @@ const useMiddlewares = (app) => {
     rule3.hour  = times3;  
 
     try {
-        var j = schedule.scheduleJob(times, function(){
+        var j = schedule.scheduleJob(rule3, function(){
             try {
                 // 爬取数据的脚本
                 // 实时更新mv播放地址（防止过期）
@@ -63,14 +63,11 @@ const useMiddlewares = (app) => {
     await  fenchMovie();
     // 爬取数据的脚本
 
-    
-
     // 实时更新mv播放地址（防止过期）
     require('./tasks/api.js');  
     // require('./tasks/upload.js');
 
 
-    fenchMovie()
 
 
     const app = new Koa();
