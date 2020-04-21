@@ -2,10 +2,10 @@ const rq = require('request-promise-native');
 const mongoose = require('mongoose');
 const Movie = mongoose.model('Movie');
 
-let baseurl = 'https://v1.itooi.cn/';
+let baseurl = 'http://localhost:3000/mv/url?id=';
 
 async function fenchUrl(id) {
-    let url = baseurl + `netease/mvUrl?id=${id}&quality=1080&isRedirect=0`;
+    let url = baseurl + id;
     let res =  await rq(url);
     let body;
     try {
@@ -28,13 +28,13 @@ async function fenchUrl(id) {
         let movie = movies[i];
         try{
             let data = await fenchUrl(movie.MvId);
-            console.log(data.code);
+
             if(data.code !== 200) {
                 await movie.remove({MvId: movie.MvId},function(err) {
                     console.log(err);
                 })
             } else {
-                movie.video = data.data;
+                movie.video = data.data.url;
                 await movie.save();
             }
         }catch(err) {

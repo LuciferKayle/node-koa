@@ -17,7 +17,10 @@ export class movieController {
     @get('/')
     async getMoviesAll(ctx, next) {
         let {page,pageSize,createdAt} = ctx.query;
+        console.log(page,pageSize,createdAt )
         const response = await getAllMovies(parseInt(page),parseInt(pageSize),parseInt(createdAt));
+        console.log(response)
+
         ctx.body = response;
     }
 
@@ -38,7 +41,6 @@ export class movieloadController {
     @get('/')
     async getMoreSingerMv(ctx, next) {
         let {singer} = ctx.query;
-        console.log(singer);
         const response = await loadMoreMvBySingName(singer);
         ctx.body = response;
     }

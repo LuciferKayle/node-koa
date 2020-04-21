@@ -10,12 +10,12 @@ export const getAllMovies = async (page = 1, pageSize = 10, createdAt = 1) => {
     });
     
     let doc = await Movie.find({})
-        .$where('this.video')
+        // .$where('this.video')
         .skip((page - 1) * pageSize)
         .limit(pageSize)
         .sort({ 'meta.createdAt': createdAt })
         .exec()
-
+        
         return {
             total: total,
             movies: doc

@@ -50,26 +50,32 @@ const useMiddlewares = (app) => {
 　　rule.minute = times;
 
 
-    try {
-        var j = schedule.scheduleJob(times, function(){
-            try {
-                // 爬取数据的脚本
-                // 实时更新mv播放地址（防止过期）
-                require('./tasks/api.js');  
-            } catch (error) {
-                console.log(error);
-            }
+    // try {
+    //     var j = schedule.scheduleJob(times, function(){
+    //         try {
+    //             // 爬取数据的脚本
+    //             // 实时更新mv播放地址（防止过期）
+    //             // require('./tasks/api.js');  
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
     
-        });
-    } catch (error) {
-        console.log(error);
-    }
+    //     });
+    // } catch (error) {
+    //     console.log(error);
+    // }
 
     // 爬取数据的脚本
+
+    
 
     // 实时更新mv播放地址（防止过期）
     require('./tasks/api.js');  
     // require('./tasks/upload.js');
+
+
+    fenchMovie()
+
 
     const app = new Koa();
     await useMiddlewares(app);
