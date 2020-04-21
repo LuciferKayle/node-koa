@@ -48,7 +48,7 @@ const useMiddlewares = (app) => {
     try {
         var j = schedule.scheduleJob(rule3, function(){
             try {
-                await  fenchMovie();
+                await fenchMovie();
             } catch (error) {
                 console.log(error);
             }
@@ -62,7 +62,7 @@ const useMiddlewares = (app) => {
     // 爬取数据的脚本
 
     // 实时更新mv播放地址（防止过期）
-    require('./tasks/api.js');  
+    // require('./tasks/api.js');  
     // require('./tasks/upload.js');
 
 
