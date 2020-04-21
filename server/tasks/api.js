@@ -29,6 +29,7 @@ async function fenchUrl(id) {
     for (var i = 0; i < movies.length; i++) {
 
         let movie = movies[i];
+        
         try{
             let data = await fenchUrl(movie.MvId);
 
@@ -40,7 +41,9 @@ async function fenchUrl(id) {
                 movie.video = data.data.url;
                 await movie.save();
             }
-        });
+        }catch(err) {
+            console.log(err);
+        };
 
     }
 
