@@ -20,8 +20,8 @@ async function fenchUrl(id) {
 
 ; (async () => {
     let movies = await Movie.find({})
-    .limit(pageSize)
     .sort({ 'meta.createdAt': -1 })
+    .limit(30)
     .exec()
 
     for (var i = 0; i < movies.length; i++) {
