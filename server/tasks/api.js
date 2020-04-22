@@ -19,13 +19,10 @@ async function fenchUrl(id) {
 }
 
 ; (async () => {
-    let movies = await Movie.find({
-        $or: [
-            { videoKey: null },
-            { coverKey: null }
-        ],
-    })
-
+    let movies = await Movie.find({})
+    .limit(pageSize)
+    .sort({ 'meta.createdAt': -1 })
+    .exec()
 
     for (var i = 0; i < movies.length; i++) {
 
