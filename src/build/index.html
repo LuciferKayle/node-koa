@@ -13,8 +13,144 @@
         height: 100%;
     }
 </style>
+<style>
+    <style>* {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background-color: rgb(2, 10, 34);
+        user-select: none;
+    }
+
+    ul {
+        position: fixed;
+        top: 50px;
+        left: 50px;
+        list-style: none;
+        border: 1px solid rgb(209, 170, 110);
+    }
+
+    li {
+        float: left;
+        height: 50px;
+        width: 50px;
+        padding: 0 20px;
+        text-align: center;
+        font-size: 50px;
+        color: rgb(224, 221, 30);
+        line-height: 50px;
+        border-right: 1px solid rgb(209, 170, 110);
+        z-index: 999;
+    }
+
+    li:last-child {
+        border-right: none;
+    }
+
+    .draw {
+        position: fixed;
+        width: 1px;
+        line-height: 1px;
+        cursor: default;
+        z-index: 2;
+    }
+
+    /* 设置几个鼠标跟随元素消失的动画 */
+    @keyframes floatOne {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateY(-20px) scale(.2) rotate(45deg);
+        }
+    }
+
+    @keyframes floatTwo {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateY(-35px) scale(.1) rotate(45deg);
+        }
+    }
+
+    @keyframes floatThree {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateY(-50px) scale(.3) rotate(45deg);
+        }
+    }
+
+    @keyframes floatFour {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateY(-65px) scale(.1) rotate(45deg);
+        }
+    }
+
+    @keyframes floatFive {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateY(-80px) scale(.2) rotate(45deg);
+        }
+    }
+</style>
+</style>
 
 <body>
+
+
+    <ul>
+        <li class="act">✩</li>
+        <!-- <li>★</li>
+        <li>✡</li>
+        <li>✹</li>
+        <li>✧</li>
+        <li>✦</li>
+        <li>❆</li>
+        <li>✶</li>
+        <li>✸</li> -->
+    </ul>
+
+
 
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script>
@@ -103,6 +239,48 @@
 
     </script>
 
+
+    <script>
+
+        var H = 0;
+        setInterval(function () {
+            H <= 360 ? H++ : H = 0;
+        }, 10)
+        var ul = document.getElementsByTagName('ul')[0];
+        ul.onclick = function (e) {
+            e = e || window.event;
+            var t = e.target || e.srcElement;
+            if (t.tagName === "LI") {
+                // 更改被选中的 li 的激活样式
+                var act = document.querySelector(".act");
+                act.classList.remove("act");
+                t.classList.add("act");
+            }
+        }
+        var floatTypes = ["floatOne", "floatTwo", "floatThree", "floatFour", "floatFive"];//动画名
+        window.onmousemove = function (e) {
+            e = e || window.event;
+
+            var act = document.querySelector(".act");
+            //随机获取一个动画
+            var floatType = floatTypes[Math.floor(Math.random() * floatTypes.length)];
+            var xPos = e.pageX;
+            var yPos = e.pageY;
+            var drawEle = document.createElement("div");
+            //设置生成元素的属性
+            drawEle.className = "draw";
+            drawEle.style.fontSize = "50px";
+            drawEle.style.color = "hsla(" + H + ",100%,70%,1)";
+            drawEle.style.left = xPos - 25 + "px";
+            drawEle.style.top = yPos - 25 + "px";
+            drawEle.style.animation = floatType + " .9s 1";
+            drawEle.innerText = act.innerText;
+            document.body.appendChild(drawEle);
+            setTimeout(function () {
+                drawEle.parentNode.removeChild(drawEle);
+            }, 800)
+        }
+    </script>
 </body>
 
 </html>
