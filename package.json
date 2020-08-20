@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/LuciferKayle/node-koa#readme",
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "core-js": "^2.6.8",
     "glob": "^7.1.4",
     "koa": "^2.7.0",
